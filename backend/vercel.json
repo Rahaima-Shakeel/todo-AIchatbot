@@ -2,16 +2,25 @@
     "version": 2,
     "builds": [
         {
-            "src": "app/main.py",
-            "use": "@vercel/python"
+            "src": "index.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
         }
     ],
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "app/main.py"
+            "dest": "index.py"
         }
     ],
+    "functions": {
+        "index.py": {
+            "maxDuration": 60,
+            "memory": 1024
+        }
+    },
     "env": {
         "ENVIRONMENT": "production"
     }
