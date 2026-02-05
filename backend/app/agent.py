@@ -9,6 +9,10 @@ from sqlmodel import Session
 from app.database import engine
 from app.services.chat_service import ChatService
 from app.mcp_server import mcp_server
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 # Configure logging
 logging.basicConfig(

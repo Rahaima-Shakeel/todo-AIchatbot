@@ -5,6 +5,10 @@ import os
 
 from app.database import create_db_and_tables
 from app.routers import users, tasks, chat
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 
 @asynccontextmanager
