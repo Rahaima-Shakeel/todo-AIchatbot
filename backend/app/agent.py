@@ -25,11 +25,11 @@ llm_model = os.getenv("LLM_MODEL", "gpt-4o")
 # Auto-detect key type and set defaults
 if api_key and not api_base:
     if api_key.startswith("s-"): # Qwen
-        api_base = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+        api_base = os.getenv("QWEN_API_BASE", "https://dashscope.aliyuncs.com/compatible-mode/v1")
         if llm_model == "gpt-4o":
             llm_model = "qwen-plus"
     elif api_key.startswith("AIza"): # Gemini
-        api_base = "https://generativelanguage.googleapis.com/v1beta/openai/"
+        api_base = os.getenv("GEMINI_API_BASE", "https://generativelanguage.googleapis.com/v1beta/openai/")
         if llm_model in ["gpt-4o", "gemini-1.5-flash", "gemini-2.0-flash", "gemini-2.0-flash-lite", "gemini-flash-lite-latest"]:
             llm_model = "gemini-flash-latest"
 

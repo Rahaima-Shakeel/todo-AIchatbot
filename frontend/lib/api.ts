@@ -1,6 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://todo-app-nu-woad.vercel.app';
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+if (!API_URL) {
+  console.warn('NEXT_PUBLIC_API_URL is not defined');
+}
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({

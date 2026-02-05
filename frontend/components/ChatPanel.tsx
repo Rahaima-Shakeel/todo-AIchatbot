@@ -59,7 +59,11 @@ export default function ChatPanel({ isOpen, onClose, onTaskMutation }: ChatPanel
 
         try {
             const token = localStorage.getItem('access_token');
-            const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+            const API_URL = process.env.NEXT_PUBLIC_API_URL;
+            if (!API_URL) {
+                console.error('NEXT_PUBLIC_API_URL is not set');
+                return;
+            }
 
             const response = await fetch(`${API_URL}/api/chat/stream?message=${encodeURIComponent(textContent)}`, {
                 method: 'POST',
